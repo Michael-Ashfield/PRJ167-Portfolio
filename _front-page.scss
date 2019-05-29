@@ -1,0 +1,266 @@
+.home {
+    &__hero__container {
+        background-image: url("../images/somerset-care-hero.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding-top: 7rem;
+        height: 90vh;
+        display: flex;
+        align-items: center;
+    }
+
+    &__hero {
+        color: $dark-primary-color;
+
+        h2 {
+            line-height: rem-calc(40);
+        }
+
+        &__secondary {
+            color: $secondary-color;
+        }
+    }
+
+    &__tabs {
+        h3 {
+            color: $white;
+        }
+        
+        .tabs-title {
+            width: 50%;
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: $primary-color;
+                color: $white;
+            }
+        }
+
+        .tabs-title:last-child {
+            a {
+                background: $secondary-color;
+            }
+        }
+
+        .is-active {
+            a {
+                //background-color: unset;
+            }
+        }
+
+        .panel1 {
+            background: $primary-color;
+        }
+
+        .panel2 {
+            background: $secondary-color;
+        }
+
+        .tabs-panel {
+            @include global_padding;
+        }
+
+        &__panel__roles {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &__panel__role {
+            text-align: center;
+            color: $white;
+
+            &:hover {
+                color: darken($white, 5%);
+
+                path {
+                    fill: darken($white, 5%);
+                }
+            }
+
+            p {
+                margin-top: 1.5rem;
+            }
+        }
+
+        &__panel__locations {
+            p {
+                text-align: center;
+                color: $white;
+                width: 70%;
+                margin: 0 auto;
+            }
+
+            &__list {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+                a {
+                    margin: 1rem;
+                }
+            }
+
+            &__item {
+                color: $white;
+
+                &:hover {
+                    color: darken($white, 5%);
+                }
+
+                .locations-item-active {
+                    border-bottom: 2px solid currentColor;
+                }
+            }
+        }
+
+        &__panel__map {
+            display: flex;
+
+            svg {
+                margin: 0 auto;
+                width: 80%;
+                height: 80%;
+            }
+
+            .map-area {
+                &:hover {
+                    fill: lighten($dark-primary-color, 5%)
+                }
+            }
+
+            .map-area-active {
+                &:hover {
+                    fill: lighten($primary-color, 5%)
+                }
+            }
+
+            .map-text {
+                font-size: 0.7rem;
+                text-align: right;
+            }
+        }
+    }
+
+    &__orbit {
+        color: $secondary-color;
+        text-align: center;
+        margin: 0 auto;
+        background-image: linear-gradient(0, #eaf2e4, $white);
+        @include global_padding_tall;
+
+        h2 {
+            margin-bottom: 2rem;
+        }
+        
+        .orbit-bullets {
+            button {
+                border-radius: 0;
+                background: unset;
+                color: $primary-color;
+                margin: 1rem;
+                width: auto;
+                height: auto;
+                padding-bottom: 0.3rem;
+            }
+
+            .is-active {
+                background: unset;
+                border-bottom: 3px solid $primary-color;
+            }
+        }
+
+        .artboard {
+            stroke: $primary-color;
+        }
+
+        .orbit-previous {
+            transform: rotate(90deg);
+        }
+
+        .orbit-next {
+            transform: rotate(-90deg);
+        }
+
+        .orbit-wrapper {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .responsive-embed {
+            box-shadow: 0 12px 13px -10px black;
+
+            .responsive-embed {
+                @extend .widescreen; // Extends widescreen class to all responsive orbit video, as orbit breaks this normally
+            }
+        }
+    }
+
+    &__values {
+        @include global_padding;
+        background-image: url("../images/values-background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    &__care {
+        @include global_padding;
+        text-align: center;
+        color: $secondary-color;
+
+        &__view {
+            margin-top: 4rem;
+
+            .button {
+                margin-bottom: 2.5rem;
+            }
+
+            p {
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+
+    &__more {
+        @include global_padding_tall;
+        text-align: left;
+        background-image: url("../images/care-background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        .home__hero {
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__facts {
+        @include global_padding;
+        background: $primary-color;
+
+        h2 {
+            text-align: center;
+            color: $white;
+        }
+    }
+
+    &__stories {
+        @include global_padding;
+        background: $secondary-color;
+        color: $white;
+
+        h2 {
+            color: $white;
+        }
+
+        hr {
+            border-width: 3px;
+            opacity: 0.2;
+        }
+
+        &__left {
+            font-size: 1.3rem;
+        }
+    }
+}

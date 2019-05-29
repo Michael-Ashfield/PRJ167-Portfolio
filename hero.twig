@@ -1,0 +1,48 @@
+{# Needs custom classes for images #}
+
+<div class="hero-container new-hero-container">
+    {% for hero in post.meta('heros_set') %}
+        {% if hero.acf_fc_layout == 'hero_slide' %}
+            <!-- Hero slide -->
+            {% if hero.single_url_option %}
+                <a href="{{ hero.single_url }}" title="{{ hero.single_url_title }}">
+            {% endif %}
+            <div class="hero carousel-{{ loop.index }} {{ hero.hero_class }}" id="{{ hero.hero_id ? hero.hero_id : "" }}" data-bgimg="{{ Image(hero.hero_background).src }}" style="background-position: {{ hero.hero_background_position == "custom" ? hero.hero_background_position_custom_vertical ~ "% " ~ hero.hero_background_position_custom_horizontal ~ "%": hero.hero_background_position }};" >
+                <div class="hero-grid-container grid-x">
+                    <div class="hero-left-column cell medium-6 hero-position-{{ hero.left_content_position }} hero-alignment-{{ hero.left_content_alignment }}">
+                        {% if hero.left_type == "Image" %}
+                            {% if hero.left_image %}
+                                <img {% if loop.first %} src="{{ Image(hero.left_image).src }}" {% else %} data-src="{{ Image(hero.left_image).src }}"{% endif %} alt="{{ hero.left_image_alt }}" class="hero-left-image {{ hero.left_hide_on_small ? "hide-for-small-only" : "" }} {{ hero.right_hide_on_small ? "right_hide_on_small" : "" }}" 
+                                style="width:{{ hero.left_image_width ? hero.left_image_width ~ "%" : "auto" }}; max-width: {{ hero.left_image_max_width }}px; margin:{{ hero.left_vertical_image_margin }}px {{ hero.left_horizontal_image_margin }}px;"/>
+                            {% endif %}
+                        {% else %}
+                            <div class="hero-left-html {{ hero.left_hide_on_small ? "hide-for-small-only" : "" }}">
+                                {{ hero.left_html }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="hero-right-column cell medium-6 hero-position-{{ hero.right_content_position }} hero-alignment-{{ hero.right_content_alignment }} {{ hero.left_hide_on_small ? "hide-for-small-only" : "" }} {{ hero.right_hide_on_small ? "right_hide_on_small" : "" }}" >
+                        {% if hero.right_type == "Image" %}
+                            {% if hero.right_image %}
+                                <img {% if loop.first %} src="{{ Image(hero.right_image).src }}" {% else %} data-src="{{ Image(hero.right_image).src }}"{% endif %} alt="{{ hero.right_image_alt }}" class="hero-right-image {{ hero.right_hide_on_small ? "hide-for-small-only" : "" }}" 
+                                style="width:{{ hero.right_image_width ? hero.right_image_width ~ "%" : "auto" }}; max-width: {{ hero.right_image_max_width }}px; margin:{{ hero.right_vertical_image_margin }}px {{ hero.right_horizontal_image_margin }}px;"/>
+                            {% endif %}
+                        {% else %}
+                            <div class="hero-right-html {{ hero.right_hide_on_small ? "hide-for-small-only" : "" }}">
+                                {{ hero.right_html }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {{ hero.single_url_option ? "</a>" : "" }}
+        {% endif %}
+    {% endfor %}
+    <div class="hero-controls">
+        {% for hero in post.meta('heros_set') %}
+            {% if hero.acf_fc_layout == 'hero_slide' %}
+                <div class="slide-{{ loop.index }} hero-control"></div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
